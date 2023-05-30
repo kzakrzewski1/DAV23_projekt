@@ -4,9 +4,10 @@ import plotly.graph_objects as go
 from plotly.offline import init_notebook_mode, iplot, plot
 import numpy as np
 from itertools import cycle
+import os
 
 
-can_df = pd.read_csv("owid/can.csv")
+can_df = pd.read_csv(os.path.join("owid", "can.csv"))
 can_df["date"] = pd.to_datetime(can_df["date"])
 
 
@@ -80,7 +81,7 @@ for type in to_plot:
     else:
         name = type
 
-    hovertemplate = f"<b>{name} </b> <br><br>Date: %{{x}} <br>Cases: %{{y:.4s}}<extra></extra>"
+    hovertemplate = f"<b>{name} </b> <br><br>Date: %{{x}} <br>Cases: %{{y:.3s}}<extra></extra>"
 
 
     plots.append(go.Bar(x = pd.to_datetime(dates),
@@ -121,7 +122,19 @@ fig.update_layout(
         'yanchor': 'top'},
 
     xaxis_range = (pd.to_datetime("2020-03-05"), pd.to_datetime("2023-05-15")),
-    yaxis_range = (0,310000)
+    yaxis_range = (0,310000),
+
+    yaxis_title={
+        'text': "Number of cases",
+        "font_family": "Courier",
+        "font_size": 26
+    },
+
+    xaxis_title={
+        'text': "Date",
+        "font_family": "Courier",
+        "font_size": 26
+    }
 )
 
 plot(fig, filename = "plot.html")
