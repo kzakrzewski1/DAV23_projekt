@@ -1,6 +1,9 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.offline import init_notebook_mode, iplot, plot
 import numpy as np
+from itertools import cycle
 
 
 can_df = pd.read_csv("owid/can.csv")
@@ -28,7 +31,7 @@ date = "Collection (week)"
 id = "_Identifier"
 perc = "%CT Count of Sample #"
 
-df[date] = pd.to_datetime(df[date])
+df[date] = pd.to_datetime(df[date],format="%Y-%m-%d")
 df = df[df[date] != df[date].min()]
 
 omicron = ["Other Omicron", "BA.1", "BA.2", "BA.3", "BA.4", "BA.5"]
@@ -44,13 +47,13 @@ def f(x):
 df[id] = df[id].apply(f)
 
 to_plot = [
-    "Omicron",
+    "Other",
     "Alpha",
     "Beta",
-    "Delta",
     "Gamma",
+    "Delta",
     "Eta",
-    "Other",
+    "Omicron",
     "Recombinants",
 ]
 
@@ -62,27 +65,63 @@ scale = [get_total(d) for d in dates]
 bottom = np.zeros_like(dates).astype(df[perc].dtype)
 
 
-plt.figure(figsize=(25, 8))
-
-for x in to_plot:
-    tmp = df[df[id] == x]
-    tmp = tmp.groupby([date]).sum()
+palette = cycle(px.colors.qualitative.Bold)
+plots = []
+for type in to_plot:
+    tmp = df[df[id] == type]
+    tmp = tmp.groupby([date]).sum(numeric_only = True)
     tmp = tmp.reset_index()
     tmp = tmp.set_index(date)
     tmp = tmp.sort_index()
     tmp = tmp.reindex(dates, fill_value=0)
-    plt.bar(dates, scale * tmp[perc], bottom=bottom, width=7.0, label=x)
-    bottom += tmp[perc]
 
-ax = plt.gca()
-ax.legend(fontsize=16)
-ax.set_title("Weekly New Cases per Variant", size=25, pad=25)
-ax.set_xlabel("Date", size=18, labelpad=15)
-ax.set_ylabel("Total number of New Cases\n", size=18)
+    if(type == "Other"):
+        name = "Original"
+    else:
+        name = type
 
-ax.set_axisbelow(True)
-ax.set_facecolor("#F0F0F0")
-ax.grid(color="white", linewidth=1.6)
-ax.grid(which="minor", color="white", linewidth=0.5)
+    hovertemplate = f"<b>{name} </b> <br><br>Date: %{{x}} <br>Cases: %{{y:.4s}}<extra></extra>"
 
-plt.show()
+
+    plots.append(go.Bar(x = pd.to_datetime(dates),
+                        y =  np.round(scale * tmp[perc],0),
+                        name = name, 
+                        hovertemplate = hovertemplate,
+                        marker_color = next(palette))
+            )
+    
+
+
+layout = go.Layout(
+    barmode='overlay',
+)
+
+fig = dict(data = plots, layout = layout)
+fig = go.Figure(fig)
+
+fig.update_xaxes(dtick = "M3", tickangle = 45, showgrid = True)
+fig.update_layout(
+    legend=dict(
+    title="Variant <br>",
+    y = 0.5,
+    font=dict(
+            family="Courier",
+            size=18,
+            color="black"
+        ),
+    ),
+
+    title={
+        'text': "<b>Weekly Cases by Variant</b>",
+        'y':0.96,
+        'x':0.5,
+        "font_family": "Courier",
+        "font_size": 32,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+
+    xaxis_range = (pd.to_datetime("2020-03-05"), pd.to_datetime("2023-05-15")),
+    yaxis_range = (0,310000)
+)
+
+plot(fig, filename = "plot.html")
