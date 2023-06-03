@@ -1,0 +1,14 @@
+,pruid,prname,prnameFR,date,totalcases,ratecases_total,numdeaths,ratedeaths,bins,population
+2562,62,Nunavut,Nunavut,2023-05-06,3531,8712.93,7,17.27,"(0, 40]",40.5K
+2561,61,Northwest Territories,Territoires du Nord-Ouest,2023-05-06,11511,25240.65,22,48.24,"(40, 80]",45.6K
+2559,11,Prince Edward Island,Île-du-Prince-Édouard,2023-05-06,57251,33541.32,103,60.34,"(40, 80]",170.7K
+2556,10,Newfoundland and Labrador,Terre-Neuve-et-Labrador,2023-05-06,55360,10525.28,341,64.83,"(40, 80]",526.0K
+2560,60,Yukon,Yukon,2023-05-06,4989,11393.27,32,73.08,"(40, 80]",43.8K
+2558,12,Nova Scotia,Nouvelle-Écosse,2023-05-06,143108,14033.98,859,84.24,"(80, 120]",1.0M
+2550,59,British Columbia,Colombie-Britannique,2023-05-06,400661,7532.18,5518,103.73,"(80, 120]",5.3M
+2557,13,New Brunswick,Nouveau-Brunswick,2023-05-06,90652,11163.2,883,108.74,"(80, 120]",812.0K
+2554,35,Ontario,Ontario,2023-05-06,1617673,10706.39,16514,109.3,"(80, 120]",15.1M
+2551,48,Alberta,Alberta,2023-05-06,632099,13913.35,5720,125.9,"(120, 160]",4.5M
+2552,47,Saskatchewan,Saskatchewan,2023-05-06,155381,13004.74,1960,164.04,"(160, 200]",1.2M
+2553,46,Manitoba,Manitoba,2023-05-06,156049,11073.41,2501,177.47,"(160, 200]",1.4M
+2555,24,Quebec,Québec,2023-05-06,1341086,15422.48,17841,205.17,"(200, 240]",8.7M

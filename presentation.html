@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+p {
+  margin: 45px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+
+.container {
+  position: fixed;
+}
+
+
+
+.prev,
+.next {
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.numbertext {
+  color: #424242;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: fixed;
+  top: 0;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.upcentered {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.leftbelow {
+    position: fixed;
+    top: 87%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+<body>
+
+
+<div class="container">
+
+  <div class="mySlides">
+        <div class="numbertext">1 / 11</div>
+        <img src="plots/title_slide.png" style="width:80%" class = "centered">
+       
+        <p style="font-size: 12px" class = "leftbelow"><font face = "Courier"></font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 11</div>
+    <img src="plots/new_cases.png" style="width:100%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv</font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 11</div>
+    <embed type="text/html" src="plots/variants.html" style="width:95%; height:90%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://health-infobase.canada.ca/src/data/covidLive/covid19-epiSummary-variants.csv</font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">4 / 11</div>
+    <img src="plots/cases_deaths.png" style="width:76%; top:23%" class = "upcentered">
+    <img src="plots/cases_tests.png" style="width:76%; ; top:70%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; top:89.3%; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv</font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 11</div>
+    <img src="plots/usa_comparison.png" style="width:100%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://github.com/owid/covid-19-data/blob/master/public/data/owid-covid-data.csv</font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 11</div>
+    <embed type="text/html" src="plots/Map_animation_cases.html" style="width:95%; height:100%" class = "centered">
+
+    <p style="font-size: 12px; top:85%; left:50%" class = "leftbelow"><font face = "Courier"> Source:&nbsphttps://github.com/ccodwg/Covid19Canada/blob/master/retired_datasets/individual_level/cases_2020.csv</font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">7 / 11</div>
+    <embed type="text/html" src="plots/Map_deaths_100K.html" style="width:94%; height:96%; top:48%" class = "centered">
+
+    <p style="font-size: 12px; top:93%; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://health-infobase.canada.ca/src/data/covidLive/covid19-download.csv</font> </p>
+  </div>
+
+
+  <div class="mySlides">
+    <div class="numbertext">8 / 11</div>
+    <img src="plots/vaccination.gif" style="width:70%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://health-infobase.canada.ca/src/data/covidLive/vaccination-administration.csv</font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">9 / 11</div>
+    <img src="plots/Restrictions_Average.png" style="width:80%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://github.com/OxCGRT/covid-policy-tracker/blob/master/data/OxCGRT_nat_latest.csv</font> </p>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">10 / 11</div>
+    <img src="plots/Restrictions_International travel controls.png" style="width:80%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://github.com/OxCGRT/covid-policy-tracker/blob/master/data/OxCGRT_nat_latest.csv</font> </p>
+  </div>
+
+
+  <div class="mySlides">
+    <div class="numbertext">11 / 11</div>
+    <img src="plots/travel.png" style="width:80%" class = "upcentered">
+    <br>
+    <br>
+    <p style="font-size: 12px; left:25%" class = "leftbelow"><font face = "Courier"> Source: https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2410005001</font> </p>
+  </div>
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+ 
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+</body>
+</html>
